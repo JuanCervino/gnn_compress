@@ -38,7 +38,7 @@ parser.add_argument(
     "--dataset-name",
     type=str,
     default="ogbn-arxiv",
-    choices=['ogbn-arxiv', 'ogbn-products'],
+    choices=['ogbn-arxiv', 'ogbn-products', 'ogbn-papers100M'],
     help="Dataset name. ogbn-arxiv or ogbn-products "
 )
 
@@ -60,7 +60,7 @@ parser.add_argument(
 
 parser.add_argument(
     '--num-partitions',
-    default=2,
+    default=16,
     type=int,
     help='Number of graph partitions to generate')
 
@@ -99,7 +99,7 @@ def main():
         args.num_partitions,
         path_to_save,
         num_hops=1,
-        reshuffle=True,
+        # reshuffle=True,
         balance_ntypes=train_mask,
         balance_edges=True,
         part_method=args.part_method)

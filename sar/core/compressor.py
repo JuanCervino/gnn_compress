@@ -275,8 +275,8 @@ class VariableFeatureCompressorDecompressor(CompressorDecompressorBase):
 
         else:
             compressed_feature_dim = active_feature_dim
-        print(
-            f'compressed feature dim at layer {Config.current_layer_index} : {compressed_feature_dim}', 'iter', iter, current_ratio)  # juan added this
+        # print(
+        #     f'compressed feature dim at layer {Config.current_layer_index} : {compressed_feature_dim}', 'iter', iter, current_ratio)  # juan added this
         return compressed_feature_dim
 
     def compress(self, tensors_l: List[Tensor], iter: int = 0, scorer_type=None):
@@ -320,7 +320,7 @@ class VariableFeatureCompressorDecompressor(CompressorDecompressorBase):
         for val in channel_feat:
             if Config.current_layer_index < Config.total_layers - 1:
                 compressed_feature_dim = val.size(-1)
-                print('decompressed', compressed_feature_dim)
+                # print('decompressed', compressed_feature_dim)
 
                 val = F.pad(
                     val, (0, active_feature_dim - compressed_feature_dim))
@@ -382,8 +382,8 @@ class VariableDropoutCompressorDecompressor(CompressorDecompressorBase):
 
         else:
             compressed_feature_dim = active_feature_dim
-        print(
-            f'compressed feature dim at layer {Config.current_layer_index} : {compressed_feature_dim}', 'iter', iter, current_ratio)  # juan added this
+        # print(
+        #     f'compressed feature dim at layer {Config.current_layer_index} : {compressed_feature_dim}', 'iter', iter, current_ratio)  # juan added this
         return compressed_feature_dim
 
     def compress(self, tensors_l: List[Tensor], iter: int = 0, scorer_type=None):
